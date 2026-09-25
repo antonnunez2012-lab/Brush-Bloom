@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Brush & Bloom | Face Paint Tutorials</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --purple: #55358c;
+            --light-purple: #eee8fa;
+            --pink: #e98bb5;
+            --cream: #fffaf7;
+            --dark: #292331;
+            --muted: #756d7d;
+            --white: #ffffff;
+            --border: #e7e0eb;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            height: 76px;
+            background: rgba(255, 250, 247, 0.96);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: Georgia, serif;
+            font-size: 25px;
+            font-weight: bold;
+            color: var(--purple);
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--pink);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--purple);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            padding: 80px 9%;
+            background:
+                radial-gradient(circle at 90% 20%, #eee5fa 0, transparent 30%),
+                radial-gradient(circle at 10% 80%, #fce6ef 0, transparent 28%),
+                var(--cream);
+        }
+
+        .hero-text {
+            max-width: 570px;
+        }
+
+        .eyebrow {
+            color: var(--purple);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(48px, 6vw, 78px);
+            line-height: 1;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .hero h1 span {
+            color: var(--purple);
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 18px;
+            max-width: 500px;
+            margin-bottom: 32px;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--purple);
+            color: white;
+            padding: 14px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .hero-placeholder {
+            width: 420px;
+            height: 440px;
+            border-radius: 220px 220px 30px 30px;
+            background: var(--light-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            text-align: center;
+            padding: 30px;
+        }
+
+        /*
+            LATER:
+            Replace this placeholder with your own image.
+
+            Example:
+
+            <img src="images/hero.jpg" alt="Face painting">
+        */
+
+        /* SECTION */
+
+        section {
+            padding: 80px 9%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        /* CATEGORIES */
+
+        .categories {
+            background: white;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--dark);
+            transition: 0.2s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            border-color: var(--pink);
+        }
+
+        .category-icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .category h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .category p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* TUTORIALS */
+
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .tutorial-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.2s;
+        }
+
+        .tutorial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(50, 30, 70, 0.08);
+        }
+
+        /*
+            IMAGE AREA
+
+            Replace the placeholder below with:
+
+            <img src="images/butterfly.jpg" alt="Butterfly face paint">
+
+            You can have:
+            images/butterfly.jpg
+            images/tiger.jpg
+            images/unicorn.jpg
+            etc.
+        */
+
+        .tutorial-image {
+            height: 220px;
+            background: var(--light-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            overflow: hidden;
+        }
+
+        .tutorial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tutorial-info {
+            padding: 22px;
+        }
+
+        .tutorial-info h3 {
+            font-family: Georgia, serif;
+            font-size: 24px;
+            margin-bottom: 7px;
+        }
+
+        .tutorial-info p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .watch-link {
+            color: var(--purple);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* VIDEO SECTION */
+
+        .video-section {
+            background: var(--light-purple);
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+
+        /* EQUIPMENT */
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .equipment-card {
+            border: 1px solid var(--border);
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+        }
+
+        .equipment-card h3 {
+            font-family: Georgia, serif;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .equipment-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--purple);
+            color: white;
+            padding: 45px 9%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .logo {
+            color: white;
+        }
+
+        footer .logo span {
+            color: #f3a9c8;
+        }
+
+        footer p {
+            opacity: 0.75;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-placeholder {
+                width: 100%;
+                max-width: 420px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tutorial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .equipment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">
+            Brush <span>&</span> Bloom
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li><a href="#designs">Designs</a></li>
+            <li><a href="#equipment">Equipment</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-text">
+
+            <div class="eyebrow">
+                Face paint • Tutorials • Ideas
+            </div>
+
+            <h1>
+                Paint something
+                <span>beautiful.</span>
+            </h1>
+
+            <p>
+                Step-by-step face painting tutorials, design ideas
+                and equipment guides for creating your favourite looks.
+            </p>
+
+            <a href="#tutorials" class="button">
+                Explore tutorials
+            </a>
+
+        </div>
+
+
+        <!--
+            PUT YOUR OWN IMAGE HERE.
+
+            Example:
+
+            <img class="hero-placeholder"
+                 src="images/hero.jpg"
+                 alt="Face painting design">
+
+        -->
+
+        <div class="hero-placeholder">
+            Your main image goes here
+        </div>
+
+    </header>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="categories">
+
+        <div class="section-heading">
+            <h2>Choose a design</h2>
+            <p>Find something fun to paint.</p>
+        </div>
+
+        <div class="category-grid">
+
+            <a class="category" href="#tigers">
+                <div class="category-icon">🐯</div>
+                <h3>Tigers</h3>
+                <p>Bold stripes & whiskers</p>
+            </a>
+
+            <a class="category" href="#unicorns">
+                <div class="category-icon">🦄</div>
+                <h3>Unicorns</h3>
+                <p>Colourful magical designs</p>
+            </a>
+
+            <a class="category" href="#butterflies">
+                <div class="category-icon">🦋</div>
+                <h3>Butterflies</h3>
+                <p>Elegant wing designs</p>
+            </a>
+
+            <a class="category" href="#animals">
+                <div class="category-icon">🐾</div>
+                <h3>Animals</h3>
+                <p>Fun animal designs</p>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- TUTORIALS -->
+
+    <section id="tutorials">
+
+        <div class="section-heading">
+            <h2>Latest tutorials</h2>
+            <p>Follow along step by step.</p>
+        </div>
+
+
+        <div class="tutorial-grid">
+
+
+            <!-- BUTTERFLY -->
+
+            <article class="tutorial-card">
+
+                <div class="tutorial-image">
+
+                    <!--
+                        REPLACE THIS WITH YOUR IMAGE:
+
+                        <img
+                            src="images/butterfly.jpg"
+                            alt="Butterfly face paint"
+                        >
+                    -->
+
+                    Butterfly image
+                </div>
+
+                <div class="tutorial-info">
+
+                    <h3>Butterfly</h3>
+
+                    <p>
+                        A colourful butterfly design with
+                        simple shapes and details.
+                    </p>
+
+                    <a href="#butterfly-video" class="watch-link">
+                        Watch tutorial →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- TIGER -->
+
+            <article class="tutorial-card">
+
+                <div class="tutorial-image">
+
+                    <!--
+                        YOUR IMAGE:
+
+                        <img
+                            src="images/tiger.jpg"
+                            alt="Tiger face paint"
+                        >
+                    -->
+
+                    Tiger image
+
+                </div>
+
+                <div class="tutorial-info">
+
+                    <h3>Tiger</h3>
+
+                    <p>
+                        Learn how to create a classic
+                        tiger face paint design.
+                    </p>
+
+                    <a href="#tiger-video" class="watch-link">
+                        Watch tutorial →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- UNICORN -->
+
+            <article class="tutorial-card">
+
+                <div class="tutorial-image">
+
+                    <!--
+                        YOUR IMAGE:
+
+                        <img
+                            src="images/unicorn.jpg"
+                            alt="Unicorn face paint"
+                        >
+                    -->
+
+                    Unicorn image
+
+                </div>
+
+                <div class="tutorial-info">
+
+                    <h3>Unicorn</h3>
+
+                    <p>
+                        A colourful unicorn design
+                        with stars and magical details.
+                    </p>
+
+                    <a href="#unicorn-video" class="watch-link">
+                        Watch tutorial →
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- VIDEO TUTORIAL -->
+
+    <section class="video-section" id="butterfly-video">
+
+        <div class="section-heading">
+
+            <h2>Butterfly tutorial</h2>
+
+            <p>
+                Follow the steps and paint along.
+            </p>
+
+        </div>
+
+
+        <div class="video-container">
+
+            <!--
+                PUT YOUR VIDEO HERE.
+
+                For example:
+
+                <video controls>
+                    <source
+                        src="videos/butterfly.mp4"
+                        type="video/mp4"
+                    >
+                </video>
+
+            -->
+
+            <video controls poster="">
+
+                <source
+                    src="videos/butterfly.mp4"
+                    type="video/mp4"
+                >
+
+                Your browser does not support video.
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <!-- EQUIPMENT -->
+
+    <section id="equipment">
+
+        <div class="section-heading">
+
+            <h2>What you'll need</h2>
+
+            <p>
+                Keep your face painting kit simple.
+            </p>
+
+        </div>
+
+
+        <div class="equipment-grid">
+
+            <div class="equipment-card">
+
+                <h3>Brushes</h3>
+
+                <p>
+                    Add information about the brushes
+                    you use and what each one is best for.
+                </p>
+
+            </div>
+
+
+            <div class="equipment-card">
+
+                <h3>Face Paint</h3>
+
+                <p>
+                    Add your favourite colours,
+                    brands and tips here.
+                </p>
+
+            </div>
+
+
+            <div class="equipment-card">
+
+                <h3>Sponges</h3>
+
+                <p>
+                    Explain which sponges you use
+                    and how they help with backgrounds.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer id="about">
+
+        <div class="logo">
+            Brush <span>&</span> Bloom
+        </div>
+
+        <p>
+            Paint • Create • Bloom
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
